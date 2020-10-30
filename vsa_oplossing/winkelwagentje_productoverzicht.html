@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Producten</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/winkelwagentje.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <script src="js/winkelwagentje_productoverzicht.js"></script>
+    </head>
+    <body onload="start();">
+        
+        <section class="kolommen">
+            <div id="producten_overzicht">xx</div>
+            <div id="winkelwagentje">
+                <div id="producten_winkelwagentje"></div>
+
+                <div class="row">
+                    <label>Totaal</label>            
+                    <div class="bedrag" id="totaal_excl_transport">&euro; 0.00</div>
+                </div>  
+                <div class="row"></div>
+                <div class="row">
+                    <label><strong>Levering</strong></label>
+                </div>
+                <div class="row">    
+                    <label>Land</label>
+                    <div>
+                        <select id="land" onchange="verwerkTotalen();">
+                            <option value=""></option>
+                            <option value="België">België</option>
+                            <option value="Nederland">Nederland</option>
+                            <option value="Luxemburg">Luxemburg</option>
+                            <option value="Frankrijk">Frankrijk</option>
+                            <option value="Duitsland">Duitsland</option>
+                        </select>
+                    </div>
+                </div>   
+                <div class="row">    
+                    <label>Transportkost</label>
+                    <div class="bedrag" id="transportkost">&euro; 0.00</div>
+                </div> 
+                <div class="row"></div>
+                <div class="row">
+                    <label>Totaal (excl. BTW)</label>            
+                    <div class="bedrag" id="totaal_excl_btw">&euro; 0.00</div>
+                </div>  
+                <div class="row">    
+                    <label>BTW (21%)</label>
+                    <div class="bedrag" id="btw">&euro; 0.00</div>
+                </div> 
+                <div class="row">    
+                    <label>Totaal (incl. BTW)</label>
+                    <div class="bedrag" id="totaal_incl_btw">&euro; 0.00</div>
+                </div>   
+            </div>
+        </section>
+    </body>
+</html>

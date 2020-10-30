@@ -1,0 +1,71 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.kolommen {
+    display: flex;
+}
+
+#score {
+    padding-left: 50px;
+}
+
+#nieuwe_poging {
+    margin-top: 20px;
+}
+.vorige_poging {
+    height: 52px;
+}
+
+.vorige_poging span,
+#score span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid gray;
+    font-size: 24px;
+    text-align: center;
+    padding: 10px;    
+}
+
+.groen_bolletje {
+    color: green;
+}
+
+.rood_bolletje {
+    color: red;
+}
+
+.grijs_bolletje {
+    color: lightgrey;
+}
+
+#nieuwe_poging {
+    display: flex;
+    margin-top: 20px;
+}
+
+.ingevoerd_getal {
+    width: 28px;
+    height: 28px;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+#controlleer {
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+#boodschap,
+#reset {
+    font-size: 20px;
+    margin: 0;
+    margin-top: 10px;
+}

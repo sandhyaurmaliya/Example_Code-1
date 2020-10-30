@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="mastermind.js"></script>
+        <link rel='stylesheet' type='text/css' href='mastermind.css'>
+        <h2>MasterMind </h2>
+        <h3>Raad de 4 getalen </h3>
+    </head>
+
+    <body onload="generateRandomNumber(); getelement() "> 
+        <div>
+            <table id="mastermind"></table>   
+        </div> 
+        <div>
+            <table id="score"></table>
+        </div>        
+        
+        <footer>
+            <div id = "speel_input"> </div>  
+            <p id = "resultaat"></p>
+            <button onclick="location.reload()"> Speel Opnieuw</button>
+        </footer>
+    </body>
+</html>

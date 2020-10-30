@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kalender</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/kalender.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <script src="js/kalender_uitbreiding_2.js"></script>
+    </head>
+    <body onload="start();">
+        
+        <div class="kolommen">
+            <div id="maand">
+                <div id="label"></div>
+                <div id="buttons">
+                    <a id="vorige_maand" href="#" onclick="naarVorigeMaand();">vorige maand</a>
+                    <a id="volgende_maand" href="#" onclick="naarVolgendeMaand();">volgende maand</a>        
+                </div>
+                <div id="hoofding">
+                    <span>MA</span>
+                    <span>DI</span>
+                    <span>WO</span>
+                    <span>DO</span>
+                    <span>VR</span>
+                    <span>ZA</span>
+                    <span>ZO</span>
+                </div>
+                <div id="dagen">
+                    
+                </div>
+            </div>
+
+            <div id="activiteiten">
+                
+            </div>
+        </div>
+    </body>
+ </html>       

@@ -1,0 +1,263 @@
+    <!DOCTYPE html>
+<title>Product Beheren</title>
+<head>
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link id="stylesheet" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+
+<html>
+    <body class="heeft_autorisatiesleutel_nodig" onload="toggleDarkMode()" >
+          <!-- AFMELDEN MENU -->
+          <img  id="deneme" src="" alt="">
+          <div id="afmelden-menu"  
+            style="
+            position: absolute;
+            height: fit-content;
+            right: 15px;">
+            <a id="afmelden" onclick="afmelden()" class="text-decoration-none" style="cursor: pointer;">
+                Afmelden
+                <svg  width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-open" fill="#007bff" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z"/>
+                    <path fill-rule="evenodd" d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z"/>
+                    <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z"/>
+                </svg> 
+            </a>    
+        </div>
+        <!-- DARK MODE TOGGLE -->
+        <div class="custom-control custom-switch" style="position: absolute; left: 47%;">
+            <input type="checkbox" class="custom-control-input" id="darkmode" onclick="toggleDarkMode()" checked>
+            <label class="custom-control-label" for="darkmode" id="dark_mode_txt">Dark Mode</label>
+        </div>
+
+      <!-- BODY -->
+        <div id="product_tabel_body">
+            <h3 style="margin: 10px;">PRODUCTEN OVERZICHT</h3>
+
+            <button onclick="toon_modal('toevoegen','')" type="button" class="btn btn-primary" style="margin: 10px;" data-toggle="modal" data-target="#productModal">
+                toevoegen
+                <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2.6px;">
+                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+            </button>
+          
+            
+        </div>    
+
+        <!-- Button trigger modal -->
+                    
+        <!-- NESTED MODAL OM NIEUWE Categorie/Maat/Kleur TE TOEVOEGEN -->
+                    <div class="modal fade" id="nieuw_op_database_modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="nieuw_op_database_modal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="nieuw_op_database_modal_titel">Modal title</h5>
+                            </div>
+                            <div class="modal-body" id="nieuw_op_database_modal_body">
+
+                            </div>
+                            <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="sluit_sub_tabel_bewerken_modal_af()">Close</button>
+                                  <button id='bevestig_post_database' type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>    
+        
+        <!-- FILTER DIV -->
+        <form class="row m-2">
+            <div class="row">
+                <div class="col">
+                    <label for="naam_filter">Filter</label>
+                    <input oninput="filter_waarde('algemeen')" id="algemeen_filter"type="text" class="form-control" placeholder="Filter">
+                </div>
+                <div class="col">
+                    <label for="filter-naam">Prijs</label>
+                    <input oninput="filter_waarde('Prijs')" id='Prijs_filter' type="text" class="form-control" placeholder="Vind producten die duurder zijn">
+                </div>
+            </div>
+        </form>
+        
+        <div>
+            <div class="md-form mb-3 mt-1">
+            </div>
+        </div>    
+        
+        <!-- TABLE -->
+        <div class="table-responsive">
+            <table id="product_tabel" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col"><a href="javascript:;" onclick="sorteer('ProductID', this)"># <span name='sorteer'><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                            </svg></span></a></th>
+                        <th scope="col"><a href="javascript:;" onclick="sorteer('ProductNaam', this)">Naam <span name='sorteer'></span></a></th>
+                        <th scope="col"><a href="javascript:;" onclick="sorteer('Product_typ', this)">Categorie <span name='sorteer'> </span></a></th>
+                        <th scope="col"><a href="javascript:;" onclick="sorteer('Prijs', this)">Prijs <span name='sorteer'></span></a></th>
+                        <th scope="col" style="width: 30%;"><a href="javascript:;" onclick="sorteer('product_oms',this)">Omschrijving <span name='sorteer'></span></a></th>
+                        <th scope="col">Kleuropties met afbeeldingen</th>
+                        <th scope="col">Maat opties</th>
+                        <th scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody id="producten"></tbody>
+            </table>
+        </div>
+
+        <!-- Navigatie  -->
+        <nav aria-label="table pagination" class="mt-2">
+            <ul id="paginas" class="pagination justify-content-center"></ul>
+        </nav>
+
+
+
+        <!-- Verwijderen Modal -->
+        <div class="modal fade" id="modalverwijderen" tabindex="-1" aria-labelledby="modalverwijderenLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalverwijderenLabel">Verwijderen</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>                        
+
+                    <div id="verwijderen_container" class="modal-body">
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Nee
+                        </button>
+                        <button id="bevestig_verwijderen" onclick="bevestig('verwijderen')" type="button" class="btn btn-primary" data-dismiss="modal">
+                            Ja
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    -            <!-- PRODUCT Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">
+                        Product Toevoegen
+                    </h5>
+                    <h5 class="modal-title" id="gekozen_productID"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body" id="product_toevoegen_modal">
+                    <div class="md-form mb-3">
+                        <label data-error="wrong" data-success="right" for="naam">
+                            Naam
+                        </label>
+                        <input type="text" id="naam" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-3">
+                        <label class="form-label" for="omschrijving">
+                            Omschrijving
+                        </label>
+                        <textarea class="form-control" id="omschrijving" rows="3"></textarea>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="prijs">
+                            Prijs
+                        </label>
+                        <div class="input-group mb-5">
+                            <span class="input-group-text" id="basic-addon1">
+                                €
+                            </span>
+                            <input id='prijs' type="text" class="form-control" placeholder="Prijs" aria-label="Prijs" aria-describedby="basic-addon1"/>
+                        </div>
+                    </div>
+                    <div class="md-form mb-3">
+                        <label for="categorie" class="d-flex justify-between" style="place-content: space-between;">
+                            <p>Kies categorie </p>
+                            <a href="javascript:;" onclick="toon_sub_tabel_bewerken_modal('categorie')" type="button" data-toggle="modal" data-target="#nieuw_op_database_modal">
+                                voeg een nieuwe categorie toe
+                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                </svg>
+                            </a>
+                        </label>                                
+                        <select id="categorie" class="custom-select">
+                        </select>
+                    </div>
+                    <div class="md-form mb-3 mt-1">
+                        <label for="maten" class="d-flex justify-between" style="place-content: space-between;">
+                            <p>Kies maten </p>
+                            <a href="javascript:;" onclick="toon_sub_tabel_bewerken_modal('maat')" type="button" data-toggle="modal" data-target="#nieuw_op_database_modal">
+                                voeg een nieuwe maat toe
+                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                </svg>
+                            </a>
+                        </label>
+                        <div class="row ml-2" id="maten">
+                        </div>
+                    </div>
+                    <div class="md-form mb-3 mt-1">
+                        <label for="bestaande_afbeelding" class="d-flex" style="justify-content: space-between;">
+                           <p>Kies afbeelding</p>
+                            <a class="md-form-3 text-center" id="nieuw_beeld_knop" href="javascript:;" style="color: rgb(50 147 250);">
+                                voeg een afbeelding toe                                
+                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                </svg>
+                            </a>
+                        </label>
+                        <div class="row ml-2" id="bestaande_afbeelding">
+
+                        </div>
+                    </div>
+                    
+                    <div id="nieuw_beeld"></div>
+
+                    <div class="md-form mb-3 mt-3">
+                        <label for="kleuren" class="d-flex justify-between" style="place-content: space-between;">
+                            <p>Kleuren die al bestaan in de database </p>
+                            <a href="javascript:;" onclick="toon_sub_tabel_bewerken_modal('kleur')" type="button" data-toggle="modal" data-target="#nieuw_op_database_modal">
+                                voeg een nieuwe kleur toe
+                                <svg width="1.1em" height="1.1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                </svg>
+                            </a>
+                        </label>
+                        <div class="row ml-2" id="bestaande_kleuren">
+                        </div>
+                    </div>
+                   
+                </div>
+                <hr>
+                <div class="md-form mb-3 mr-2" style="display: flex; justify-content: flex-end;">
+                    <button type="button" class="btn btn-secondary ml-1" data-dismiss="modal" onclick="initialiseren()">
+                        ANNULEREN
+                        </button>
+                        <button id="bevestig" type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+                            BEWAREN
+                        </button>
+                </div>
+            </div>                    
+        </div>
+    </div>
+</body>
+
+<script src="product_beheren.js"></script>
+<script src="new_img_color.js"></script>
+</html>
+

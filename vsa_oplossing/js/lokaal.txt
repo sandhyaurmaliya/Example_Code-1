@@ -1,0 +1,6 @@
+abc
+xxx Dit bestand wordt niet gevolgd door GIT
+yyy Dit bestand wordt niet gevolgd door GIT
+Dit is een derde ...
+Dit is een vierde ...
+def def def

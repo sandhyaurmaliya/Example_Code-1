@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>forEach met Javascript</title>
+        <meta charset="UTF-8" />       
+    </head>
+    <body>
+        <div id="namen"></div> 
+        <script>
+        var namen = ["Bert Jansen", "Jan Jansen", "Tom Jansen"];
+        var output = "";
+        
+        //zonder lus
+        output += "Naam 1: " + namen[0] + "<br />";
+        output += "Naam 2: " + namen[1] + "<br />";
+        output += "Naam 3: " + namen[2] + "<br />";
+        
+        //met for lus
+        var aantal = namen.length;
+        for(index = 0; index < aantal; index++) {
+            output += "Naam: " + namen[index] + "<br />";
+        }
+
+        //met forEach lus
+        namen.forEach(
+            function(naam) {
+                output += "Naam: " + naam + "<br />";
+        })
+
+        document.getElementById("namen").innerHTML = output;
+        </script>
+        
+        
+ 
+
+
+    </body>    
+</html>

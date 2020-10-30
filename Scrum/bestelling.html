@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Obelisk Fashion - Bestelling</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="homepagina.css">
+    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- JS, Popper.js, and jQuery -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+    
+    
+    <script src="winkelwagantje.js"></script>
+    <script src="jquery.js"></script>
+    <script src="login.js"></script>
+    <script src="bestelling.js"></script>
+
+  </head>
+
+
+  <body onload = "start_bestelling()" class="bg-light">
+    <!-- HEADER -->
+    <nav class="site-header sticky-top py-1" style="display: flex; ">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <!-- Startpagina Knop -->
+        <a class="py-2" href="index.html" aria-label="Product">
+          <svg width="1.8em" height="1.8em" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+          </svg>          
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="winkel.html?type=">Shop</a>            
+        <a class="py-2 d-none d-md-inline-block" href="latstenews.html">Nieuws</a>    
+        <a class="py-2 d-none d-md-inline-block" href="Theteam.html">Ons team</a>
+        <a class="py-2 d-none d-md-inline-block" href="contact.html">Contact</a>
+        <a class="py-2 d-none d-md-inline-block" href="producten.html">Categorieën</a>
+     
+        <!-- Zoekbalk -->
+        <div class="col-6 pr-0">
+          <a aria-label="Search">
+            <form class="form-inline mt-2 mt-md-0" style="width: 100%;">
+              <input id="zoek" class="form-control mr-sm-0"  style="width: 100%;"type="text" placeholder="Zoek een product" aria-label="Search">
+            </form>
+          </a>          
+        </div>
+        <a class="py-2 d-none d-md-inline-block" href="javascript:" onclick="zoek()">
+          <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+          </svg>
+        </a>
+
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center" style="position: sticky; left: 10px;">
+        <!-- Winkel Locatie -->
+        <a href="https://www.google.com/maps/place/Ferdinand+Coosemansstraat+127,+2600+Antwerpen/@51.1901512,4.4249487,14z/data=!4m5!3m4!1s0x47c3f7225b7fe521:0x3acba5cce33e687f!8m2!3d51.1990822!4d4.4225925" class="badge mr-3">
+          <svg width="1.6em" height="1.6em" viewBox="0 0 16 16" class="bi bi-geo-alt-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          </svg>
+        </a>
+        <!-- Aanmeelden Knop -->
+        <div class="dropleft"> 
+          <a id="gebruiker_knop" href="#" class="dropleft badge mr-3 " href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <svg width="1.8em" height="1.8em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+            </svg>
+          </a>
+          <!-- aanmelden dropdpwn -->
+          <div id="aanmelden_dropdown" class="dropdown-menu" area-labelledby='dropdownMenuOffset'>
+          </div>
+        </div>
+
+        <!-- Winkelwagantje Knop -->
+        <div>
+          <a class="badge mr-3 winkelwagantje_op_bestelling"  id="wagantje_knop">
+            <svg width="1.8em" height="1.8em" viewBox="0 0 16 16" class="bi bi-cart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+            </svg>
+            <span id="hoeveelProducten"></span>
+          </a>
+          <div class="dropdown-menu winkelwagantje" area-labelledby='wagan tje_knop'>
+            <form id="productInfo" class="px-4 py-3">
+            </form>
+            
+            <div class="col-12">
+              <p><strong>Totaal: </strong> <span id="total_prijs_winkelwag"></span></p>
+              <a id="naar_bestellen_knop" class="btn btn-danger col-12" href='bestelling.html' style="color: white!important;">
+                Naar bestellen
+              </a>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      </div>
+    </nav>
+  <!-- MAIN  -->
+  <div class="container text-align-center">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://www.obelisk.be/sites/all/themes/obelisk/logo.png" alt=""  height="72">
+    <p class="lead">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <h2 style="text-align-last: center;">Bestelling</h2>
+
+  <hr>
+  <div class="row">
+    <div id = "bestell_prodcuten" class="col-md-5 order-md-2 mb-5">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Uw winkelwagen</span>
+        <span id="totaal_antaal_producten" class="badge badge-secondary badge-pill"></span>
+      </h4>
+      <ul id = "bestell_prodcuten1" class="list-group mb-3"> 
+ 
+      </ul> 
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Totaal </span>
+        <span id="totaal_prijs"></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Levering</span>
+        <span id="gekozen_leveringkost"></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Totaal met leveringskost</span>
+        <span id="totaal_met_levering"></span>
+      </li>
+
+    </div>
+    <div class="col-md-7 order-md-1">
+      <h4 class="mb-3">Levering info</h4>
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">Naam</label>
+            <input id="hidden_klant_id" type="number" hidden value="">
+            <input type="text" class="form-control" id="levering_voornaam" placeholder="" value="" required>
+            <div class="invalid-feedback">
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Familienaam</label>
+            <input type="text" class="form-control" id="levering_naam" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Geldige naam is vereist.            
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="levering_email" placeholder="u@voorbeeld.com" required>
+          <div class="invalid-feedback">
+            Voer een geldig e-mailadres in om verzendingsupdates te ontvangen.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Adres</label>
+          <input type="text" class="form-control" id="levering_adres" placeholder="1234 Main St" required>
+          <div class="invalid-feedback">
+            Voer uw afleveradres in.
+          </div>
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Land</label>
+            <div class="custom-control custom-radio">
+              <input id="land" name="country" type="radio" class="custom-control-input" checked required>
+              <label class="custom-control-label" for="country">Belgie</label>
+            </div>
+            <div class="invalid-feedback">
+              Selecteer een land.
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state">Provincie</label>
+            <select class="custom-select d-block w-100" id="state" required>
+              <option value="">Kies...</option>
+              <option value="Antwerp">Antwerp</option>
+              <option value="Limburg">Limburg</option>
+              <option value="Oost-Vlaanderen">Oost-Vlaanderen</option>
+              <option value="West-Vlaanderen">West-Vlaanderen</option>
+              <option value="Vlaams-Brabant	">Vlaams-Brabant</option>
+              <option value="	Waals-Brabant">	Waals-Brabant</option>
+              <option value="Henegouwen">Henegouwen</option>
+              <option value="Luik">Luik</option>
+              <option value="Luxemburg">Luxemburg</option>
+              <option value="Namen">Namen</option>
+            </select>
+            <div class="invalid-feedback">
+              Selecteer een provincie.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zip">Zip</label>
+            <input type="text" class="form-control" id="zip" placeholder="" required>
+            <div class="invalid-feedback">
+              Zip code is verplicht.
+            </div>
+          </div>
+        </div> -->
+
+        <hr class="mb-4">
+        <div class="row">
+          <div class="d-block col-8 ">
+            <h4 class="mb-3 ">Leveringsmethodes</h4>
+            <div id="leveringmethodes">
+              <!-- Examples start-->
+              
+            </div>
+            <!-- examples end-->
+          </div>
+          <div class="d-block col-4 text-right">
+            <h4 class="mb-3 text-right">Kosten</h4>
+            <div id="levering_method_kosten">
+              <!-- examples start-->
+              
+              <!-- example end-->
+            </div>
+          </div>
+        </div>
+        
+    
+        <hr class="mb-4">
+        <h4 class="mb-3">Betalingswijze</h4>
+
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" value = "Credit card" checked required>
+            <label class="custom-control-label" for="credit">kredietkaart</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"  value = "Debit card" required>
+            <label class="custom-control-label" for="debit">bancontact</label>
+          </div>
+        </div>
+         <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-name">Naam op kaart</label>
+            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+            <div class="invalid-feedback">
+              Volledige naam zoals weergegeven op kaart
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cc-number">Kredietkaartnummer</label>
+            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+            <div class="invalid-feedback">
+              Credit card nummer is verplicht
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="cc-expiration">Vervaldatum</label>
+            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+            <div class="invalid-feedback">
+              Vervaldatum is verplicht
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="cc-cvv">Beveiligingscode</label>
+            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+            <div class="invalid-feedback">
+              Beveiligingscode is verplicht
+            </div>
+          </div>
+         </div>
+        <hr class="mb-4">
+
+        <!-- payment status modal -->
+
+        <button   type="button" class="btn btn-secondary btn-lg btn-block"   onclick="bevestig_bestelling()"  data-toggle="modal" data-target="#payment_status_modal">Bevestig bestelling</button>
+        <div class="modal fade" id="payment_status_modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="payment_status_modalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="payment_status_modalLabel">Betalingsstatus</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="payment_status">
+                ...
+              </div>
+              <div class="modal-footer" id="payment_failed_button">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+
+  
+
+</div>
+     <!-- FOOTER -->
+     <div class="container">
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-12 col-md">
+            <img class="mb-2" src="https://www.obelisk.be/sites/all/themes/obelisk/logo.png" alt="" width="74">
+            <small class="d-block mb-3 text-muted">© 2017-2020</small>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Volg ons</h5>
+            <ul class="list-unstyled text-small">
+              <li>
+                <a href="facebook.com">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 10h-2v2h2v6h3v-6h1.82l.18-2h-2v-.833c0-.478.096-.667.558-.667h1.442v-2.5h-2.404c-1.798 0-2.596.792-2.596 2.308v1.692z"/></svg>
+                </a>
+                <a href="instagram.com">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="twitter.com">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.5 8.778c-.441.196-.916.328-1.414.388.509-.305.898-.787 1.083-1.362-.476.282-1.003.487-1.564.597-.448-.479-1.089-.778-1.796-.778-1.59 0-2.758 1.483-2.399 3.023-2.045-.103-3.86-1.083-5.074-2.572-.645 1.106-.334 2.554.762 3.287-.403-.013-.782-.124-1.114-.308-.027 1.14.791 2.207 1.975 2.445-.346.094-.726.116-1.112.042.313.978 1.224 1.689 2.3 1.709-1.037.812-2.34 1.175-3.647 1.021 1.09.699 2.383 1.106 3.773 1.106 4.572 0 7.154-3.861 6.998-7.324.482-.346.899-.78 1.229-1.274z"/></svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Over Obelisk</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="Theteam.html">Team</a></li>
+              <li><a class="text-muted" href="https://www.google.com/maps/place/Ferdinand+Coosemansstraat+127,+2600+Antwerpen/@51.1901512,4.4249487,14z/data=!4m5!3m4!1s0x47c3f7225b7fe521:0x3acba5cce33e687f!8m2!3d51.1990822!4d4.4225925">Locatie</a></li>
+              <li><a class="text-muted" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md">
+            <h5>Openingsuren</h5>
+            <ul class="list-unstyled text-small">
+              <li><p class="text-muted">
+                maandag - zaterdag<br>10am - 6:30pm<br>zondag gesloten
+              </p></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+     </div>
+
+<script src="form-validation.js"></script>
+<script src="zoek.js"></script>
+
+<script>
+    /// Prevent closing winkelwagantje from closing when it's clicked inside the dropdown
+    $('.dropdown-menu.winkelwagantje, #aanmelden_dropdown').on('click', function(event){
+       var events = $._data(document, 'events') || {};
+       events = events.click || [];
+       for(var i = 0; i < events.length; i++) {
+           if(events[i].selector) {
+   
+               if($(event.target).is(events[i].selector)) {
+                   events[i].handler.call(event.target, event);
+               }
+   
+               $(event.target).parents(events[i].selector).each(function(){
+                   events[i].handler.call(this, event);
+               });
+           }
+       }
+       event.stopPropagation(); 
+   });
+   </script>
+</body>
+</html>

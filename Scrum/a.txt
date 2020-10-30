@@ -1,0 +1,5 @@
+API key: f5gh8JhjAXBd
+FTP server: ftp.data-webbe.webhosting.be
+http://vdab.data-web.be/kleding
+gebruikersnaam: kleding@data-webbe
+paswoord: vsakleding01

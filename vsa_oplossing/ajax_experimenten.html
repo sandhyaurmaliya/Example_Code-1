@@ -1,0 +1,277 @@
+<html>
+    <head>
+        <title>AJAX Experimentn</title>
+        <!-- JQuery -->        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>login (bv. "bert@data-web.be" en "test")</h1>
+        <div><input id="login_email" placeholder="login email" type="text"></div>
+        <div><input id="login_password" placeholder="login password" type="password"></div>
+        <div><input type="button" onclick="login()" value="Login"></div>
+        <div id="login_content"></div>
+ 
+        <hr>
+
+        <h1>read all items (first page, 2 items per page)</h1>
+        <div><input type="button" onclick="read_all()" value="Read"></div>
+        <div id="read_content_all"></div>
+ 
+        <hr>
+ 
+        <h1>read items with "voornaam" like %bert%</h1>
+        <div><input type="button" onclick="read_bert()" value="Read"></div>
+        <div id="read_content_bert"></div>
+        
+        <hr>
+
+        <h1>single read</h1>
+        <div><input id="single_read_id" type="text"></div>
+        <div><input type="button" onclick="single_read()" value="Single read"></div>
+        <div id="single_read_content"></div>
+
+        <hr>
+
+        <h1>create</h1>
+        <div><input id="create_voornaam" placeholder="create voornaam" type="text"></div>
+        <div><input id="create_achternaam" placeholder="create achternaam" type="text"></div>
+        <div id="create_content"></div>
+        <div><input type="button" onclick="create()"  value="Create"></div>
+
+        <hr>
+
+        <h1>update</h1>
+        <div><input id="update_id" type="text" placeholder="update id"></div>
+        <div><input id="update_voornaam" type="text" placeholder="update voornaam"></div>
+        <div><input id="update_achternaam" type="text" placeholder="update achternaam"></div>
+        <div id="update_content"></div>
+        <div><input type="button" onclick="update()"  value="Update"></div>
+
+        <hr>
+
+        <h1>delete</h1>
+        <div><input id="delete_id" placeholder="delete id" type="text"></div>
+        <div id="delete_content"></div>
+        <div><input type="button" onclick="del()"  value="Delete"></div>
+        <hr>
+        
+        <h1>update met bestand</h1>
+        <div><input id="update_bestand_id" type="text" placeholder="update id"></div>
+        <div><input id="update_bestand_voornaam" type="text" placeholder="update voornaam"></div>
+        <div><input id="update_bestand_achternaam" type="text" placeholder="update achternaam"></div>
+        <div><input id="update_bestand" type="file"></div>
+        <div id="update_bestand_content"></div>
+        <div><input type="button" onclick="updateFile()"  value="Update"></div>
+
+        <hr>
+        
+        <script>
+
+        function login() {
+            $.ajax({                    
+                    url: "https://api.data-web.be/user/login?project=LluG3gwZKPzC&entity=test",    
+                    type: "POST",
+                    data: { 
+                        "email": $("#login_email").val(), 
+                        "password": $("#login_password").val()                    
+                }            
+            }).done(function(json) {
+                console.log("login done:");
+                sessionStorage.setItem("token", json.status.token);            
+             
+                                 
+                $("#login_content").html(json.status.token);
+                
+
+            }).fail(function (msg) {
+                console.log("read fail:");
+                console.log(msg);
+            });
+        }
+
+        // item/read all (first page, 2 items per page)
+        function read_all() {
+            $.ajax({                    
+                    url: "https://api.data-web.be/item/read",
+                    headers: {"Authorization": "Bearer " + sessionStorage.getItem("token")},                    
+                    data: { 
+                        "project": "LluG3gwZKPzC", 
+                        "entity": "test",                        
+                        "paging": {
+                            "page": 1,
+                            "items_per_page": 2
+                        }
+                        
+                }            
+            }).done(function(json) {
+                console.log("read done:");
+                console.log(json);
+                var items = json.data.items;                
+                $("#read_content").empty();
+                items.forEach(function(item) {                    
+                    $("#read_content_all").append("<div>" + item.id + " - " + item.voornaam + "  " + item.achternaam + "</div>");
+                });
+
+            }).fail(function (msg) {
+                console.log("read fail:");
+                console.log(msg);
+            });
+        }
+
+        // item/read with "%bert%"
+        function read_bert() {
+            $.ajax({                    
+                    url: "https://api.data-web.be/item/read",
+                    headers: {"Authorization": "Bearer " + sessionStorage.getItem("token")},
+                    data: {
+                        "project": "LluG3gwZKPzC", 
+                        "entity": "test",
+                        "filter": ["voornaam", "LIKE", "%bert%"],
+                }             
+            }).done(function(json) {
+                console.log("read done:");
+                console.log(json);
+                var items = json.data.items;                
+                $("#read_content_bert").empty();
+                items.forEach(function(item) {                    
+                    $("#read_content_bert").append("<div>" + item.id + " - " + item.voornaam + "  " + item.achternaam + "</div>");
+                });
+
+            }).fail(function (msg) {
+                console.log("read fail:");
+                console.log(msg);
+            });
+        }
+
+        // item/single_read
+        function single_read() {
+            $.ajax({
+                    url: "https://api.data-web.be/item/single_read",
+                    headers: {"Authorization": "Bearer " + sessionStorage.getItem("token")},
+                    data: {
+                        "project": "LluG3gwZKPzC", 
+                        "entity": "test", 
+                        "id": $("#single_read_id").val()
+                    }            
+            }).done(function(response) {
+                console.log("single_read done:");
+                console.log(response);
+                var item = response.data.item;                
+                $("#single_read_content").empty();         
+                $("#single_read_content").append("<div>" + item.id + " - " + item.voornaam + "  " + item.achternaam + "</div>");
+            }).fail(function (msg) {
+                console.log("single_read fail:");
+                console.log(msg);
+            });
+        }
+        // item/create
+        function create() {
+            $.ajax({
+                    url: "https://api.data-web.be/item/create?project=LluG3gwZKPzC&entity=test",
+                    headers: {"Authorization": "Bearer " + sessionStorage.getItem("token")},
+                    type: "POST",
+                    data: {
+                        "values": {
+                                "voornaam": $("#create_voornaam").val(), 
+                                "achternaam": $("#create_achternaam").val()
+                            }
+                        }   
+            }).done(function(response) {
+                console.log("create done:");
+                console.log(response);
+                var id = response.data.id;                
+                $("#create_content").html("created id: " + id);         
+                
+            }).fail(function (msg) {
+                console.log("create fail:");
+                console.log(msg);
+            });
+        }
+        // item/update
+        function update() {
+            $.ajax({
+                    url: "https://api.data-web.be/item/update?project=LluG3gwZKPzC&entity=test",
+                    type: "PUT",
+                    headers: {"Authorization": "Bearer " + sessionStorage.getItem("token")},
+                    data: {
+                        "values": {
+                                "voornaam": $("#update_voornaam").val(), 
+                                "achternaam": $("#update_achternaam").val()
+                            },
+                        "filter": ["id", "=", $("#update_id").val()]                        
+                        } 
+            }).done(function(response) {
+                console.log("update done:");
+                console.log(response);    
+                if (response.status.success == true) {
+                    $("#update_content").html("updated"); 
+                }        
+                else {
+                    $("#update_content").html("not updated"); 
+                }
+            }).fail(function (msg) {
+                console.log("update fail:");
+                console.log(msg);
+            });
+        }
+
+        // item/update
+        function updateFile() {
+            var formData = new FormData();
+            var values = {
+                "voornaam": $("#update_bestand_voornaam").val(), 
+                "achternaam": $("#update_bestand_achternaam").val(), 
+                "beeld": ""
+            };
+            formData.set("values", JSON.stringify(values));         
+            formData.set("filter", JSON.stringify(["id", "=", $("#update_bestand_id").val()]));
+            formData.set("beeld", $("#update_bestand")[0].files[0]);
+          
+            $.ajax({
+                    url: "https://api.data-web.be/item/update?project=LluG3gwZKPzC&entity=test",
+                    headers: {"Authorization": "Bearer " + sessionStorage.getItem("token")},
+                    type: "PUT",
+                    processData: false,
+                    contentType: false,
+                    data: formData                                                            
+            }).done(function(response) {
+                console.log("update done:");
+                console.log(response);    
+                if (response.status.success == true) {
+                    $("#update_bestand_content").html("updated"); 
+                }         
+                else {
+                    $("#update_bestand_content").html("not updated"); 
+                }
+            }).fail(function (msg) {
+                console.log("update fail:");
+                console.log(msg);
+            });
+        }
+
+        // item/delete
+        function del() {
+            $.ajax({
+                    url: "https://api.data-web.be/item/delete?project=LluG3gwZKPzC&entity=test",
+                    headers: {"Authorization": "Bearer " + sessionStorage.getItem("token")},
+                    type: "DELETE",
+                    data: {                
+                        "filter": ["id", "=", $("#delete_id").val()]
+                        }
+            }).done(function(response) {
+                console.log("delete done:");
+                console.log(response);    
+                if (response.status.success == true) {
+                    $("#delete_content").html("deleted"); 
+                }        
+                else {
+                    $("#delete_content").html("not deleted"); 
+                }
+            }).fail(function (msg) {
+                console.log("delete fail:");
+                console.log(msg);
+            });
+        }
+        </script>
+    </body>
+</html>

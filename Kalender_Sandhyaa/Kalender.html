@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="Kalender.js"></script>
+        <link rel='stylesheet' type='text/css' href='Kalender.css'>
+        <h2>Kalender </h2>
+    </head>
+
+    <body>
+        <section>
+            <div id = "maandAndjaar"> 
+                <p id = "maand"></p>
+                <p id = "jaar" ></p>
+            </div>            
+            <div>
+                <button onclick ="vorige_maand()">Vorige Maand</button>
+                <button onclick ="volgende_maand()">Volgende Maand</button>
+            </div> 
+            <div>
+                <table class="table1">
+                    <thead id="Kalender">             
+                        <tr>                            
+                            <th>Ma</th>
+                            <th>Di</th>
+                            <th>Woe</th>
+                            <th>Don</th>
+                            <th>Vri</th>
+                            <th>Zat</th>
+                            <th>Zon</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Kalenderdatum"> </tbody>
+                </table>
+            </div> 
+        </section> 
+        <section>
+            <p id = "feestdagen"></p>             
+        </section>     
+        
+    </body>
+   
+</html>

@@ -1,0 +1,47 @@
+#maand {
+    width: 350px;
+}
+
+
+#hoofding,
+#dagen {
+    display: flex;
+    flex-wrap: wrap;    
+}
+
+#maand span {
+    padding: 15px;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+#label,
+#buttons {
+    text-align: center;
+    padding: 5px;
+}
+
+#buttons a {
+    padding: 10px;
+}
+
+.kolommen {
+    display: flex;
+}
+
+.vandaag {
+    color: #000;
+    background-color: lime;
+}
+
+.activiteit {
+    color: #fff;
+    background-color: gray;
+}
+
+.periode {
+    color: #000;
+    background-color: yellow;
+}

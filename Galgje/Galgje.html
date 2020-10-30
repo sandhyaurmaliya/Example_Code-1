@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="Galgje.js"></script>
+        <link rel='stylesheet' type='text/css' href='Galgje.css'>
+        <h1>Galgje </h1>
+    </head>
+
+   <body>
+       <div class="content">
+            <div>
+                <p>Guess the letters</p>
+                <aside>
+                    <label for="levels">Choose a level:</label>
+                          
+                        <select name="levels" id="levels" onchange ="start()"> 
+                        <option value="choose">choose a level</option>
+                      
+                        <option value="level_1">level 1</option>
+                        <option value="level_2">level 2</option>
+                        <option value="level_3">level 3</option>                        
+                        </select>
+                </aside>
+               
+            </div> 
+            <div>
+                <p id = "woordspotlight"></p>
+            </div> 
+            <div> 
+                <img id = "hangman" src = ""></p> 
+                <p id = "resultaat"></p>
+            </div>
+            
+            <div id = "keyboard"> </div>  
+            
+            <button class = "refresh" onclick="start()"> Speel Opnieuw</button>
+        </div>  
+        
+    </body>
+</html>

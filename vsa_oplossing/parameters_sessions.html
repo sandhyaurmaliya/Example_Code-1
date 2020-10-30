@@ -1,0 +1,107 @@
+<html>
+    <head>
+
+    </head>
+    <body onload="start();">
+        <ul>
+            <li><a href="parameters_sessions.html?id=1">link naar product 1</a></li>
+            <li><a href="parameters_sessions.html?id=2">link naar product 2</a></li>
+            <li><a href="parameters_sessions.html?id=3">link naar product 3</a></li>
+            <li><a href="parameters_sessions.html?id=4">link naar product 4</a></li>
+            <li><a onclick="voegToeAanWinkelwagentje(1);" href="javascript:;">voeg product 1 toe aan winkelwagentje</a></li>
+            <li><a onclick="voegToeAanWinkelwagentje(2);" href="javascript:;">voeg product 2 toe aan winkelwagentje</a></li>
+            <li><a onclick="voegToeAanWinkelwagentje(3);" href="javascript:;">voeg product 3 toe aan winkelwagentje</a></li>
+            <li><a onclick="voegToeAanWinkelwagentje(4);" href="javascript:;">voeg product 4 toe aan winkelwagentje</a></li>
+        </ul>
+              
+        <h3>Product info</h3>
+        <div id="product_info"></div>
+
+        <h3>Winkelwagentje</h3>
+        <div id="winkelwagentje"></div>
+
+        <script>
+            var producten = [
+                    {"id": 1, "naam": "product naam 1"},
+                    {"id": 2, "naam": "product naam 2"},
+                    {"id": 3, "naam": "product naam 3"},
+                    {"id": 4, "naam": "product naam 4"},
+                ];
+            
+            function start() {
+                var urlParams = new URLSearchParams(window.location.search);
+                var id = urlParams.get('id');
+        
+                if (id != null) {
+                    toonProductInfo(id);
+                }
+                
+                toonWinkelwagentje();
+            }
+
+            function haalProductOp(id) {
+                var resultaat;
+                producten.forEach(function(product) {                         
+                    if (product.id == id) {                           
+                        resultaat = product;  
+                    }
+                });
+                return resultaat;
+            }
+
+            function haalWinkelwagentjeOp() {                
+                // var winkelwagentje = sessionStorage.getItem("winkelwagentje");    
+                // => '{"producten":["1", "2"]}'
+                var winkelwagentje = JSON.parse(sessionStorage.getItem("winkelwagentje"));    
+                // => winkelwagentje = {"producten":["1",2]}
+
+                if (winkelwagentje == null) {
+                    winkelwagentje = {"producten": []};
+                }
+                return winkelwagentje;
+            } 
+
+            function schrijfWinkelwagentjeWeg(winkelwagentje) {
+                sessionStorage.setItem("winkelwagentje", JSON.stringify(winkelwagentje))
+            }
+
+            function toonProductInfo(id) {
+                var product = haalProductOp(id);
+                console.log(product);             
+                document.getElementById("product_info").innerHTML = "gekozen product: " + product.naam;                 
+            }
+
+            function toonWinkelwagentje() {
+                var winkelwagentje = haalWinkelwagentjeOp();
+                console.log(winkelwagentje);
+                if (winkelwagentje.producten.length > 0) {
+                    winkelwagentje_html = "<ul>";
+                    winkelwagentje.producten.forEach(function(id) {                          
+                        var product = haalProductOp(id);
+                        
+                        winkelwagentje_html += "<li>" + product.naam + "</li>";
+                    });
+                    winkelwagentje_html += "</ul>";
+                }
+                else {
+                    winkelwagentje_html = "Nog geen producten in winkelwagentje";
+                }
+                
+                document.getElementById("winkelwagentje").innerHTML = winkelwagentje_html;
+            }
+
+            
+            function voegToeAanWinkelwagentje(id) {
+                var winkelwagentje = haalWinkelwagentjeOp();
+            
+                winkelwagentje.producten.push(id);
+                
+                schrijfWinkelwagentjeWeg(winkelwagentje);
+
+                toonWinkelwagentje();
+            }
+        </script>
+
+        
+    </body>
+</html>

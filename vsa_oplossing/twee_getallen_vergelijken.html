@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Twee Getallen vergelijken</title>
+        <script src="js/twee_getallen_vergelijken.js"></script>
+    </head>
+    <body>
+        <h2>Twee getallen</h2>
+        <form>   
+            <div>
+                <label>Getal 1</label>
+                <input type="number" id="getal_1" />
+            </div>     
+            <div>
+                <label>Getal 2</label>
+                <input type="number" id="getal_2" />
+            </div>
+            <div>
+                <input type="button" value="Bereken" onclick="bereken(); vergelijken();" />
+                <input type="button" value="Opnieuw" onclick="opnieuw();" />
+            </div>
+        </form>
+         
+        <h2>Berekeningen</h2>
+        <label><strong>Optelling van de twee getallen</strong></label>
+        <div id="optelling">...</div>
+        <hr />
+        <label><strong>Aftrekking van de twee getallen</strong></label>
+        <div id="aftrekking">...</div>
+        <hr />
+        <label><strong>Vermenigvuldiging van de twee getallen</strong></label>
+        <div id="vermenigvuldiging">...</div>
+        <hr />
+        <label><strong>Deling van de twee getallen</strong></label>
+        <div id="deling">...</div>
+        <hr />
+        <label><strong>Vergelijkingen</strong></label>
+        <div id="vergelijkingen">...</div>
+    </body>
+</html>

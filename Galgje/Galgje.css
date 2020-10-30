@@ -1,0 +1,46 @@
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .content {
+    max-width: 700px;
+    margin: auto;
+  }
+   h1{
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  label ,p{
+    font-size: x-large;
+    color: crimson;
+    text-align: center;
+  }
+  
+  .refresh{
+
+    background-color:blue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+  }
+
+  img{
+    padding-left: 250px;
+  }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Producten Beheren</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="producten.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="bestelling_beheren.js"></script>
+
+</head>
+<body class="container-fluid ml-1 mr-1" onload="Initialize()">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link " href="product_beheren.html">Producten Overzicht</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="klant_beheren.html">Klant Overzicht</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="bestelling_beheren.html">Bestelling Overzicht</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="contact_beheren.html">Contact Formulier Overzicht</a>
+          </li>
+  
+      </ul> 
+    <h1>Bestelling beheren </h1>
+
+    <div>
+        <input type="radio" id="shipped" name="shipped" value="1" onclick="filter_product('1')">
+        <label for="shipped">shipped</label><br>
+
+        <input type="radio" id="unshipped" name="shipped" value="0"onclick="filter_product('0')">
+        <label for="unshipped">unshipped</label><br>
+
+        
+        <input type="radio" id="betaald" name="betaald" value="true"onclick="filter_payment('true')">
+        <label for="betaald">betaald</label><br>
+
+        <input type="radio" id="nietbetaald" name="betaald" value="false"onclick="filter_payment('false')">
+        <label for="nietbetaald">nietbetaald</label><br>
+
+    </div>   
+
+    
+   
+
+    <table id="products" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>user_id</th>
+                <th>Order_date</th>
+                <th>levering_adres</th>
+                <th>paymennt_method</th>
+                <th>levering_method</th>
+                <th>levering_adres</th>
+                <th>product_antaal</th>``
+                <th>totaal_prijs</th>
+                <th>levering_datum</th>
+                <th>payment_status</th>
+                <th>shipped</th>
+            </tr>
+        </thead>
+        <tbody id="table">
+
+
+        </tbody>
+
+    </table>
+        
+    
+    </div>
+    <script src="login.js"></script>
+    <script>
+        window.addEventListener("onload", session_control ()); 
+    </script>
+</body>
+</html>

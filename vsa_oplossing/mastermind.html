@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Producten</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/mastermind.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <script src="js/mastermind.js"></script>
+    </head>
+    <body onload="start();">
+        <h1>MasterMind</h1>
+        <p>Raad de 4 getallen:</p>
+        <div class="kolommen">
+            <div id="speelveld">
+                <div id="vorige_pogingen">
+
+                </div> 
+                <div id="nieuwe_poging">
+                    <input class="ingevoerd_getal" type="text" id="getal_1">
+                    <input class="ingevoerd_getal" type="text" id="getal_2">
+                    <input class="ingevoerd_getal" type="text" id="getal_3">
+                    <input class="ingevoerd_getal" type="text" id="getal_4">
+                    <button id="controlleer" onclick="controleerIngevoerdeGetallen()">✓</button>
+                </div>
+                <div id="boodschap"></div>
+                <button id="reset" onclick="start()">Speel opnieuw</button>
+            </div>
+            <div id="score">
+
+            </div>
+        </div>
+    </body>
+</html>
+    

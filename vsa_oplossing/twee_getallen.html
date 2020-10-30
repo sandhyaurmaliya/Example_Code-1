@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Twee Getallen</title>
+        
+    </head>
+    <body>
+        <h2>Twee getallen</h2>
+        <label><strong>Getal 1</strong></label>
+        <div id="getal_1"></div>
+        <label><strong>Getal 2</strong></label>
+        <div id="getal_2"></div>
+        <h2>Berekeningen</h2>
+        <label><strong>Optelling van de twee getallen</strong></label>
+        <div id="optelling"></div>
+        <hr />
+        <label><strong>Aftrekking van de twee getallen</strong></label>
+        <div id="aftrekking"></div>
+        <hr />
+        <label><strong>Vermenigvuldiging van de twee getallen</strong></label>
+        <div id="vermenigvuldiging"></div>
+        <hr />
+        <label><strong>Deling van de twee getallen</strong></label>
+        <div id="deling"></div>
+        <hr />
+       
+        <script>
+        var getal_1 = 300;
+        var getal_2 = 600;
+
+        document.getElementById("getal_1").innerHTML = getal_1;
+        document.getElementById("getal_2").innerHTML = getal_2;
+
+        var optelling = getal_1 + getal_2;
+        document.getElementById("optelling").innerHTML = optelling;        
+
+        var aftrekking = getal_1 - getal_2;
+        document.getElementById("aftrekking").innerHTML = aftrekking;        
+
+        var vermenigvuldiging = getal_1 * getal_2;
+        document.getElementById("vermenigvuldiging").innerHTML = vermenigvuldiging;        
+
+        var deling = getal_1 / getal_2;
+        document.getElementById("deling").innerHTML = deling;  
+        </script>
+    </body>
+</html>
